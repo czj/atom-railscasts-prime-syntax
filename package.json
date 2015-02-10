@@ -1,5 +1,5 @@
 {
-  "name": "Railscasts Prime Syntax",
+  "name": "railscasts-prime-syntax",
   "theme": "syntax",
   "version": "0.1.0",
   "description": "Syntax theme based on the RailsCast TextMate theme, tweaked to look better in Atom.",
