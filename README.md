@@ -1,4 +1,4 @@
-# RailsCasts Heritage theme
+# RailsCasts Prime theme
 
 Syntax theme for Atom editor, based on the RailsCast TextMate theme.
 
