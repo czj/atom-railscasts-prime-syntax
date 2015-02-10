@@ -1,0 +1,11 @@
+{
+  "name": "railscasts-prime-syntax",
+  "theme": "syntax",
+  "version": "0.1.0",
+  "description": "Syntax theme based on the RailsCast TextMate theme.",
+  "repository": "https://github.com/czj/railscasts-prime-syntax",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  }
+}
