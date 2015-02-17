@@ -1,120 +1,200 @@
-// @import "./styles/base.less";
+@import "./styles/base.less";
 
-.atom-text-editor, :host {
-  &, .gutter {
-    background-color: #2b2b2b;
-    color: #e6e1dc;
-  }
-
-  &.is-focused {
-    .cursor {
-      border-color: #fff;
-    }
-
-    .selection .region {
-      background-color: rgba(90, 100, 126, 0.6);
-    }
-
-    .line-number.cursor-line-no-selection, .line.cursor-line {
-      background-color: #333435;
-      background-color: #333435;
-    }
-  }
-
-  .indent-guide,
-  .invisible-character {
-    opacity: 0.1;
-  }
-}
+@brownish: #cc7833;
+@redish: #da4939;
+@lightgreen: #a5c261;
+@darkgreen: #429965;
+@lightblue: #6e9cbe;
+@yellowish: #e8bf6a;
+@greenish: #519f50;
+@purpleish: saturate(darken(rgb(204,206,255), 1), 3);
 
 .comment {
   font-style: italic;
-  color: #757570;
 }
 
-.keyword,
-.storage {
-  color: #cc7833;
+.entity {
+  // Ruby Slim : classes of div like .column
+  &.name.tag,
+  &.other.attribute-name {
+    color: @yellowish;
+  }
+
+  &.name.tag,
+  // Class name in "class TheClass" definition
+  &.name.type {
+    text-decoration: none;
+  }
+  &.other.inherited-class {
+    color: darken(@yellowish, 15)
+  }
 }
 
-.entity.name.function,
-.keyword.other.name-of-parameter.objc {
-  color: #ffc66d;
-}
+.keyword {
+  color: @brownish;
 
-.entity.name {
-  color: #ffffff;
-}
+  &.control {
+    color: @brownish;
+  }
 
-.constant.numeric {
-  color: #a5c261;
-}
+  &.operator {
+    color: #999;
+  }
 
-.variable.language,
-.variable.other {
-  color: #d0d0ff;
-}
+  // Language keywords : initialize raise private attr_reader etc...
+  &.other.special-method {
+    color: @brownish;
+  }
 
-.constant {
-  color: #6d9cbe;
-}
-
-.variable.other.constant {
-  color: #da4939;
-}
-
-.constant.language {
-  color: #6e9cbe;
+  // &.other.unit {
+  //   color: @orange;
+  // }
 }
 
 .string {
-  color: #a5c261;
+  // Text inside strings
+  color: @lightgreen;
+
+  // All text inside the regexps
+  &.regexp {
+    color: @darkgreen;
+  }
+
+  &.other.link {
+    color: @red;
+  }
+
+  // Ruby code inside a string
+  .source {
+    color: @darkgreen;
+  }
 }
 
-.support.function {
-  color: #da4939;
+// In ruby that is "true" or "false" or "nil"
+// Also ":" for hashes keys, symbols
+.constant {
+  color: darken(@lightblue, 10);
+
+  &.numeric {
+    color: @lightgreen;
+  }
+
+  // Ruby symbols (only the text inside)
+  &.other.symbol {
+    color: @lightblue;
+  }
+
+  // CAPS constants
+  // Also, classes names passed as arguments. Ex: include ThisClass
+  &.other.variable {
+    color: lighten(@redish, 20);
+  }
+
+  &.character.escape {
+    color: purple;
+  }
+
+  &.other.color {
+    color: @lightblue;
+  }
 }
 
-.support.type {
-  color: #6e9cbe;
+
+// Comments ! Of course ! :-)
+.comment {
+  color: darken(@syntax-text-color, 32);
+  font-style: italic;
+
+  // The signs before comments : # or // or /*
+  &.punctuation.definition {
+    color: darken(@syntax-text-color, 42);
+  }
 }
 
-.support.constant {
-  color: #a5c261;
+
+.punctuation {
+  // Ruby < symbol class inheritance
+  &.inheritance {
+    &.variable {
+      color: @brownish;
+    }
+  }
+
+  &.definition {
+    // Quotes surrounding a string
+    &.string {
+      color: darken(@lightgreen, 15);
+    }
+
+    // Parenthesis surrounding a function's params
+    &.parameters {
+      color: darken(@syntax-text-color, 20);
+    }
+
+    // Ruby << symbol for inheritance like in "class << self"
+    &.variable {
+      color: @brownish;
+    }
+  }
+
+  // Ruby embed code in a Slim template
+  // Example : #id This embed #{ ruby_code(42) } informations !
+  &.section.embedded {
+    color: @redish;
+  }
 }
 
-.meta.tag,
-.declaration.tag,
-.entity.name.tag,
-.entity.other.attribute-name {
-  color: #e8bf6a;
+// The | character in a lambda's params for instance
+.variable {
+  color: @redish;
+
+  // The instance variable name
+  &.instance,
+  // The @ sign before the instance variable name
+  .punctuation.variable {
+    color: @purpleish;
+  }
+
+  // The | character in lambda's params
+  &.punctuation.separator {
+    color: darken(@syntax-text-color, 20);
+  }
+
+  // Block params, between the two pipes, like |variable|
+  &.other.block {
+    color: @syntax-text-color;
+  }
+
+  &.interpolation {
+    color: @purpleish;
+  }
+
+  &.parameter.function {
+    color: @syntax-text-color;
+  }
+
+  &.language.self {
+    color: darken(@syntax-text-color, 20);
+  }
 }
 
-.invalid {
-  color: #ffffff;
-  background-color: #990000;
+.support {
+  // Ruby constants in caps
+  // Class names
+  &.class {
+    color: lighten(@redish, 15);
+  }
+
+  // Method calls like "render", "content_for", etc. in rails' views
+  // or select gsub etc... in ruby code
+  //
+  // Somewhere in the CSS there is an !important on .support.function
+  // I can't find it but it overwrite this rule
+  &.function {
+    color: @syntax-text-color !important;
+  }
 }
 
-.constant.character.escaped,
-.constant.character.escape,
-.string .source,
-.string .source.ruby {
-  color: #519f50;
-}
-
-.markup.inserted {
-  color: #e6e1dc;
-  background-color: #144212;
-}
-
-.markup.deleted {
-  color: #e6e1dc;
-  background-color: #660000;
-}
-
-.meta.diff.header,
-.meta.separator.diff,
-.meta.diff.index,
-.meta.diff.range {
-  background-color: #2f33ab;
+.support.function.kernel.ruby {
+  color: @purpleish;
 }
