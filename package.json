@@ -3,9 +3,9 @@
   "theme": "syntax",
   "version": "1.0.1",
   "description": "Syntax theme based on the RailsCast TextMate theme, tweaked to look better in Atom.",
-  "repository": "https://github.com/czj/atom-railscasts-prime-syntax",
+  "repository": "https://github.com/levups/atom-railscasts-prime-syntax",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">1.13.0"
   }
 }
