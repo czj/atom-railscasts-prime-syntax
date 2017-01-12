@@ -9,192 +9,192 @@
 @greenish: #519f50;
 @purpleish: saturate(darken(rgb(204,206,255), 1), 3);
 
-.comment {
+.syntax--comment {
   font-style: italic;
 }
 
-.entity {
+.syntax--entity {
   // Ruby Slim : classes of div like .column
-  &.name.tag,
-  &.other.attribute-name {
+  &.syntax--name.syntax--tag,
+  &.syntax--other.syntax--attribute-name {
     color: @yellowish;
   }
 
-  &.name.tag,
+  &.syntax--name.syntax--tag,
   // Class name in "class TheClass" definition
-  &.name.type {
+  &.syntax--name.syntax--type {
     text-decoration: none;
   }
-  &.other.inherited-class {
+  &.syntax--other.syntax--inherited-class {
     color: darken(@yellowish, 15)
   }
 }
 
-.keyword {
+.syntax--keyword {
   color: @brownish;
 
-  &.control {
+  &.syntax--control {
     color: @brownish;
   }
 
-  &.operator {
+  &.syntax--operator {
     color: #999;
   }
 
-  // Language keywords : initialize raise private attr_reader etc...
-  &.other.special-method {
+  // Language keywords : initialize raise private attr_reader etc.
+  &.syntax--other.syntax--special-method {
     color: @brownish;
   }
 
-  // &.other.unit {
+  // &.syntax--other.syntax--unit {
   //   color: @orange;
   // }
 }
 
-.string {
+.syntax--string {
   // Text inside strings
   color: @lightgreen;
 
   // All text inside the regexps
-  &.regexp {
+  &.syntax--regexp {
     color: @darkgreen;
   }
 
-  &.other.link {
+  &.syntax--other.syntax--link {
     color: @red;
   }
 
   // Ruby code inside a string
-  .source {
+  .syntax--source {
     color: @darkgreen;
   }
 }
 
 // In ruby that is "true" or "false" or "nil"
 // Also ":" for hashes keys, symbols
-.constant {
+.syntax--constant {
   color: darken(@lightblue, 10);
 
-  &.numeric {
+  &.syntax--numeric {
     color: @lightgreen;
   }
 
   // Ruby symbols (only the text inside)
-  &.other.symbol {
+  &.syntax--other.syntax--symbol {
     color: @lightblue;
   }
 
   // CAPS constants
-  // Also, classes names passed as arguments. Ex: include ThisClass
-  &.other.variable {
+  // Also, classes names passed as arguments.syntax-- Ex: include ThisClass
+  &.syntax--other.syntax--variable {
     color: lighten(@redish, 20);
   }
 
-  &.character.escape {
+  &.syntax--character.syntax--escape {
     color: purple;
   }
 
-  &.other.color {
+  &.syntax--other.syntax--color {
     color: @lightblue;
   }
 }
 
 
 // Comments ! Of course ! :-)
-.comment {
+.syntax--comment {
   color: darken(@syntax-text-color, 32);
   font-style: italic;
 
   // The signs before comments : # or // or /*
-  &.punctuation.definition {
+  &.syntax--punctuation.syntax--definition {
     color: darken(@syntax-text-color, 42);
   }
 }
 
 
-.punctuation {
+.syntax--punctuation {
   // Ruby < symbol class inheritance
-  &.inheritance {
-    &.variable {
+  &.syntax--inheritance {
+    &.syntax--variable {
       color: @brownish;
     }
   }
 
-  &.definition {
+  &.syntax--definition {
     // Quotes surrounding a string
-    &.string {
+    &.syntax--string {
       color: darken(@lightgreen, 15);
     }
 
     // Parenthesis surrounding a function's params
-    &.parameters {
+    &.syntax--parameters {
       color: darken(@syntax-text-color, 20);
     }
 
     // Ruby << symbol for inheritance like in "class << self"
-    &.variable {
+    &.syntax--variable {
       color: @brownish;
     }
   }
 
   // Ruby embed code in a Slim template
   // Example : #id This embed #{ ruby_code(42) } informations !
-  &.section.embedded {
+  &.syntax--section.syntax--embedded {
     color: @redish;
   }
 }
 
 // The | character in a lambda's params for instance
-.variable {
+.syntax--variable {
   color: @redish;
 
   // The instance variable name
-  &.instance,
+  &.syntax--instance,
   // The @ sign before the instance variable name
-  .punctuation.variable {
+  .syntax--punctuation.syntax--variable {
     color: @purpleish;
   }
 
   // The | character in lambda's params
-  &.punctuation.separator {
+  &.syntax--punctuation.syntax--separator {
     color: darken(@syntax-text-color, 20);
   }
 
   // Block params, between the two pipes, like |variable|
-  &.other.block {
+  &.syntax--other.syntax--block {
     color: @syntax-text-color;
   }
 
-  &.interpolation {
+  &.syntax--interpolation {
     color: @purpleish;
   }
 
-  &.parameter.function {
+  &.syntax--parameter.syntax--function {
     color: @syntax-text-color;
   }
 
-  &.language.self {
+  &.syntax--language.syntax--self {
     color: darken(@syntax-text-color, 20);
   }
 }
 
-.support {
+.syntax--support {
   // Ruby constants in caps
   // Class names
-  &.class {
+  &.syntax--class {
     color: lighten(@redish, 15);
   }
 
   // Method calls like "render", "content_for", etc. in rails' views
-  // or select gsub etc... in ruby code
+  // or select gsub etc. in ruby code
   //
-  // Somewhere in the CSS there is an !important on .support.function
+  // Somewhere in the CSS there is an !important on .syntax--support.syntax--function
   // I can't find it but it overwrite this rule
-  &.function {
+  &.syntax--function {
     color: @syntax-text-color !important;
   }
 }
 
-.support.function.kernel.ruby {
+.syntax--support.syntax--function.syntax--kernel.syntax--ruby {
   color: @purpleish;
 }
