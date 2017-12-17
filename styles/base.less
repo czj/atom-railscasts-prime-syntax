@@ -49,16 +49,15 @@ atom-text-editor {
   .selection .region {
     background-color: @syntax-selection-color;
   }
-}
+  
+  .search-results .marker .region {
+    background-color: transparent;
+    border: 1px solid @syntax-result-marker-color;
+  }
 
-
-atom-text-editor .search-results .syntax--marker .region, .search-results .syntax--marker .region {
-  background-color: transparent;
-  border: 1px solid @syntax-result-marker-color;
-}
-
-atom-text-editor .search-results .syntax--marker.current-result .region, .search-results .syntax--marker.current-result .region {
-  border: 1px solid @syntax-result-marker-color-selected;
+  .search-results .syntax--marker.current-result .region {
+    border: 1px solid @syntax-result-marker-color-selected;
+  }
 }
 
 .syntax--comment {
